@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace IndicadorChileWeb.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         #region Interfaces
         private readonly ILogger<HomeController> logger;
@@ -13,17 +13,21 @@ namespace IndicadorChileWeb.Controllers
 
 
 
+        #region Constructor Method
         public HomeController(ILogger<HomeController> Logger)
-            : base()
+            : base(ControllerName: "Principal")
         {
             this.logger = Logger;
         }
+        #endregion
 
 
 
         #region Views
         public IActionResult Index()
         {
+            this.IndexContent();
+            
             return View();
         }
 
@@ -38,5 +42,12 @@ namespace IndicadorChileWeb.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         #endregion
+
+
+
+        private void IndexContent()
+        {
+            this.ViewDataTitle(ActionName: "Index");
+        }
     }
 }
