@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace IndicadorChileWeb.Controllers
 {
@@ -6,6 +7,7 @@ namespace IndicadorChileWeb.Controllers
     {
         #region Variables
         private string title;
+        private string keywords;
 
         #region Read Only
         private readonly string controllerName;
@@ -20,6 +22,7 @@ namespace IndicadorChileWeb.Controllers
         {
             this.controllerName = ControllerName;
             this.title = string.Empty;
+            this.keywords = string.Empty;
         }
         #endregion
 
@@ -36,6 +39,12 @@ namespace IndicadorChileWeb.Controllers
         {
             get => this.title;
         }
+
+        [ViewData]
+        public string Keywords
+        {
+            get => this.keywords;
+        }
         #endregion
 
 
@@ -45,6 +54,14 @@ namespace IndicadorChileWeb.Controllers
             this.title = string.Join(
                 separator: " - ",
                 value: [this.controllerName, ActionName]
+            );
+        }
+
+        protected void ViewDataKeywords(string[] Keywords)
+        {
+            this.keywords = string.Join(
+                separator: ", ",
+                value: Keywords
             );
         }
     }

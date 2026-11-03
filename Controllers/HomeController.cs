@@ -50,6 +50,12 @@ namespace IndicadorChileWeb.Controllers
         private void IndexContent()
         {
             this.ViewDataTitle(ActionName: "Index");
+            this.ViewDataKeywords(
+                Keywords: new string[]
+                {
+                    this.ControllerName
+                }
+            );
         }
         #endregion
     }
