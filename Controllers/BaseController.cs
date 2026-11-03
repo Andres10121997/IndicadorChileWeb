@@ -14,12 +14,14 @@ namespace IndicadorChileWeb.Controllers
 
 
 
+        #region Constructor Method
         public BaseController(string ControllerName)
             : base()
         {
             this.controllerName = ControllerName;
             this.title = string.Empty;
         }
+        #endregion
 
 
 
@@ -40,7 +42,10 @@ namespace IndicadorChileWeb.Controllers
 
         protected void ViewDataTitle(string ActionName)
         {
-            this.title = $"{this.controllerName} - {ActionName}";
+            this.title = string.Join(
+                separator: " - ",
+                value: [this.controllerName, ActionName]
+            );
         }
     }
 }

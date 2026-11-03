@@ -24,20 +24,21 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Views
-        public IActionResult Index()
+        public ActionResult Index()
         {
             this.IndexContent();
             
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [
+            ResponseCache(
+                Duration = 0,
+                Location = ResponseCacheLocation.None,
+                NoStore = true
+            )
+        ]
+        public ActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
@@ -45,9 +46,11 @@ namespace IndicadorChileWeb.Controllers
 
 
 
+        #region Content
         private void IndexContent()
         {
             this.ViewDataTitle(ActionName: "Index");
         }
+        #endregion
     }
 }
