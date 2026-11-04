@@ -65,7 +65,9 @@ namespace IndicadorChileWeb.Controllers
                         action
                     }
                 ),
-                this.ViewDataTitleAsync(ActionName: action)
+                this.ViewDataTitleAsync(
+                    ActionName: action
+                )
             );
         }
         #endregion

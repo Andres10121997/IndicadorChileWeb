@@ -65,7 +65,10 @@ namespace IndicadorChileWeb.Controllers
             await Task.Run(
                 function: () => this.title = string.Join(
                     separator: " - ",
-                    value: [this.controllerName, ActionName]
+                    value: [
+                        this.controllerName,
+                        ActionName
+                    ]
                 )
             );
         }
