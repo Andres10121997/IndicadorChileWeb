@@ -6,6 +6,7 @@ namespace IndicadorChileWeb.Controllers
     public abstract class BaseController : Controller
     {
         #region Variables
+        private string actionName;
         private string title;
         private string keywords;
 
@@ -20,6 +21,7 @@ namespace IndicadorChileWeb.Controllers
         public BaseController(string ControllerName)
             : base()
         {
+            this.actionName = string.Empty;
             this.controllerName = ControllerName;
             this.title = string.Empty;
             this.keywords = string.Empty;
@@ -29,7 +31,13 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Field
-        public string ControllerName
+        protected string ActionName
+        {
+            get => this.actionName;
+            set => this.actionName = value;
+        }
+        
+        protected string ControllerName
         {
             get => this.controllerName;
         }

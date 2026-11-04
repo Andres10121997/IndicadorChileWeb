@@ -55,18 +55,18 @@ namespace IndicadorChileWeb.Controllers
         #region Content
         private async Task IndexContentAsync()
         {
-            string action = "Index";
+            this.ActionName = "Index";
 
             await Task.WhenAll(
                 this.ViewDataKeywordsAsync(
                     Keywords: new string[]
                     {
                         this.ControllerName,
-                        action
+                        this.ActionName
                     }
                 ),
                 this.ViewDataTitleAsync(
-                    ActionName: action
+                    ActionName: this.ActionName
                 )
             );
         }
