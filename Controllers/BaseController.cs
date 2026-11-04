@@ -38,7 +38,7 @@ namespace IndicadorChileWeb.Controllers
         [ViewData]
         public string Title
         {
-            get => this.title;
+            get => $"Indicadores de Chile | {this.title}";
         }
 
         [ViewData]
