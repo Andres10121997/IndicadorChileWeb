@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace IndicadorChileWeb.Controllers
 {
@@ -22,9 +23,9 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Views
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            this.IndexContent();
+            await this.IndexContentAsync();
             
             return this.View();
         }
@@ -33,14 +34,19 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Content
-        public void IndexContent()
+        public async Task IndexContentAsync()
         {
-            this.ViewDataTitle(ActionName: "Index");
-            this.ViewDataKeywords(
-                Keywords: new string[]
-                {
-                    this.ControllerName
-                }
+            string action = "Index";
+
+            await Task.WhenAll(
+                this.ViewDataKeywordsAsync(
+                    Keywords: new string[]
+                    {
+                        action,
+                        this.ControllerName
+                    }
+                ),
+                this.ViewDataTitleAsync(ActionName: action)
             );
         }
         #endregion

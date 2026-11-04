@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace IndicadorChileWeb.Controllers
 {
@@ -49,19 +50,23 @@ namespace IndicadorChileWeb.Controllers
 
 
 
-        protected void ViewDataTitle(string ActionName)
+        protected async Task ViewDataTitleAsync(string ActionName)
         {
-            this.title = string.Join(
-                separator: " - ",
-                value: [this.controllerName, ActionName]
+            await Task.Run(
+                function: () => this.title = string.Join(
+                    separator: " - ",
+                    value: [this.controllerName, ActionName]
+                )
             );
         }
 
-        protected void ViewDataKeywords(string[] Keywords)
+        protected async Task ViewDataKeywordsAsync(string[] Keywords)
         {
-            this.keywords = string.Join(
-                separator: ", ",
-                value: Keywords
+            await Task.Run(
+                function: () => this.keywords = string.Join(
+                    separator: ", ",
+                    value: Keywords
+                )
             );
         }
     }

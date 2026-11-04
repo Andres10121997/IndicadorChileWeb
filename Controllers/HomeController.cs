@@ -2,6 +2,7 @@ using IndicadorChileWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace IndicadorChileWeb.Controllers
 {
@@ -24,9 +25,12 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Views
-        public ActionResult Index()
+        [
+            HttpGet
+        ]
+        public async Task<ActionResult> Index()
         {
-            this.IndexContent();
+            await this.IndexContentAsync();
             
             return View();
         }
@@ -47,14 +51,19 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Content
-        private void IndexContent()
+        private async Task IndexContentAsync()
         {
-            this.ViewDataTitle(ActionName: "Index");
-            this.ViewDataKeywords(
-                Keywords: new string[]
-                {
-                    this.ControllerName
-                }
+            string action = "Index";
+
+            await Task.WhenAll(
+                this.ViewDataKeywordsAsync(
+                    Keywords: new string[]
+                    {
+                        action,
+                        this.ControllerName
+                    }
+                ),
+                this.ViewDataTitleAsync(ActionName: action)
             );
         }
         #endregion
