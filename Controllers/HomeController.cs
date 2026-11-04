@@ -26,7 +26,9 @@ namespace IndicadorChileWeb.Controllers
 
         #region Views
         [
-            HttpGet
+            AutoValidateAntiforgeryToken,
+            HttpGet,
+            RequireHttps
         ]
         public async Task<ActionResult> Index()
         {

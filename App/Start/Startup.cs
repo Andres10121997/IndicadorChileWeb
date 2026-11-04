@@ -40,7 +40,7 @@ namespace IndicadorChileWeb.App.Start
             // Configure the HTTP request pipeline.
             if (!App.Environment.IsDevelopment())
             {
-                App.UseExceptionHandler("/Home/Error");
+                App.UseExceptionHandler(errorHandlingPath: "/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 App.UseHsts();
             }

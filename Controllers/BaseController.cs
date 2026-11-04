@@ -49,16 +49,7 @@ namespace IndicadorChileWeb.Controllers
 
 
 
-        protected async Task ViewDataTitleAsync(string ActionName)
-        {
-            await Task.Run(
-                function: () => this.title = string.Join(
-                    separator: " - ",
-                    value: [this.controllerName, ActionName]
-                )
-            );
-        }
-
+        #region View Data
         protected async Task ViewDataKeywordsAsync(string[] Keywords)
         {
             await Task.Run(
@@ -68,5 +59,16 @@ namespace IndicadorChileWeb.Controllers
                 )
             );
         }
+
+        protected async Task ViewDataTitleAsync(string ActionName)
+        {
+            await Task.Run(
+                function: () => this.title = string.Join(
+                    separator: " - ",
+                    value: [this.controllerName, ActionName]
+                )
+            );
+        }
+        #endregion
     }
 }

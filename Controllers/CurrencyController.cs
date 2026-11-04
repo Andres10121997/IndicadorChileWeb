@@ -4,16 +4,16 @@ using System.Threading.Tasks;
 
 namespace IndicadorChileWeb.Controllers
 {
-    public class IndicatorController : BaseController
+    public class CurrencyController : BaseController
     {
         #region Interfaces
-        private readonly ILogger<IndicatorController> logger;
+        private readonly ILogger<CurrencyController> logger;
         #endregion
 
 
 
         #region Constructor Method
-        public IndicatorController(ILogger<IndicatorController> Logger)
+        public CurrencyController(ILogger<CurrencyController> Logger)
             : base(ControllerName: "Indicador")
         {
             this.logger = Logger;
@@ -23,6 +23,11 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Views
+        [
+            AutoValidateAntiforgeryToken,
+            HttpGet,
+            RequireHttps
+        ]
         public async Task<ActionResult> Index()
         {
             await this.IndexContentAsync();
