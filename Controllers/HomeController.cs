@@ -59,8 +59,8 @@ namespace IndicadorChileWeb.Controllers
                 this.ViewDataKeywordsAsync(
                     Keywords: new string[]
                     {
-                        action,
-                        this.ControllerName
+                        this.ControllerName,
+                        action
                     }
                 ),
                 this.ViewDataTitleAsync(ActionName: action)
