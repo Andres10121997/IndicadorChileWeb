@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IndicadorChileWeb.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
@@ -36,6 +37,31 @@ namespace IndicadorChileWeb.Controllers
             
             return this.View();
         }
+
+        [
+            HttpGet
+        ]
+        public async Task<ActionResult> Search()
+        {
+            await this.SearchViewDataAsync();
+            
+            return this.View();
+        }
+
+        [
+            HttpPost
+        ]
+        public async Task<ActionResult> Search(SearchFilterModel SearchFilter)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View();
+            }
+
+            await this.SearchViewDataAsync();
+
+            return this.View();
+        }
         #endregion
 
 
@@ -45,6 +71,25 @@ namespace IndicadorChileWeb.Controllers
         private async Task IndexViewDataAsync()
         {
             this.ActionName = "Index";
+
+            await Task.WhenAll(
+                this.ViewDataKeywordsAsync(
+                    Keywords: new string[]
+                    {
+                        this.ControllerName,
+                        this.ActionName
+                    }
+                ),
+                this.ViewDataTitleAsync(
+                    ActionName: this.ActionName
+                )
+            );
+        }
+
+        [NonAction]
+        private async Task SearchViewDataAsync()
+        {
+            this.ActionName = "Buscar";
 
             await Task.WhenAll(
                 this.ViewDataKeywordsAsync(

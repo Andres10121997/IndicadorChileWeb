@@ -36,7 +36,7 @@ namespace IndicadorChileWeb.Controllers
         {
             await this.IndexViewDataAsync();
             
-            return View();
+            return this.View();
         }
 
         [
@@ -48,7 +48,12 @@ namespace IndicadorChileWeb.Controllers
         ]
         public ActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                }
+            );
         }
         #endregion
 
