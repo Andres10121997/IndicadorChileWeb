@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace IndicadorChileWeb.Controllers
 {
+    [
+        AutoValidateAntiforgeryToken,
+        RequireHttps
+    ]
     public class HomeController : BaseController
     {
         #region Interfaces
@@ -26,9 +30,7 @@ namespace IndicadorChileWeb.Controllers
 
         #region Views
         [
-            AutoValidateAntiforgeryToken,
-            HttpGet,
-            RequireHttps
+            HttpGet
         ]
         public async Task<ActionResult> Index()
         {
@@ -53,6 +55,7 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region Content
+        [NonAction]
         private async Task IndexContentAsync()
         {
             this.ActionName = "Index";
