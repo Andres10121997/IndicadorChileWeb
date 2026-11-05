@@ -1,0 +1,28 @@
+﻿@{
+    const string formID = "GetCurrencyForm";
+}
+@{
+    Html.BeginForm(
+        actionName: "",
+        controllerName: "Currency",
+        routeValues: new
+        {
+            @area = ""
+        },
+        method: FormMethod.Post,
+        antiforgery: true,
+        htmlAttributes: new
+        {
+            @autocomplete = "off",
+            @class = "",
+            @id = formID,
+            @name = formID
+        }
+    );
+        <fieldset form="@formID">
+            <legend class="text-center">
+                Buscar divisa
+            </legend>
+        </fieldset>
+    Html.EndForm();
+}
