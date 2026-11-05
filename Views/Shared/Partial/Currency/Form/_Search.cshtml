@@ -10,7 +10,7 @@
         {
             @area = ""
         },
-        method: FormMethod.Post,
+        method: FormMethod.Get,
         antiforgery: true,
         htmlAttributes: new
         {
@@ -26,8 +26,9 @@
             </legend>
 
             <div class="row">
+                <!-- Currency Type -->
                 <div class="col-12">
-                    <div class="input-group">
+                    <div class="input-group mb-3">
                         @Html.LabelFor(
                             expression: model => model.CurrencyType,
                             htmlAttributes: new
@@ -38,7 +39,7 @@
                         
                         @Html.DropDownListFor(
                             expression: model => model.CurrencyType,
-                            @Html.GetEnumSelectList<Enums.currencyTypeEnum>(),
+                            selectList: @Html.GetEnumSelectList<Enums.currencyTypeEnum>(),
                             optionLabel: "- Selecciones una opción -",
                             htmlAttributes: new
                             {
@@ -50,6 +51,56 @@
                     @Html.ValidationMessageFor(
                         expression: model => model.CurrencyType
                     )
+                </div>
+
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        @Html.LabelFor(
+                            expression: model => model.Year,
+                            htmlAttributes: new
+                            {
+                                @class = "input-group-text"
+                            }
+                        )
+
+                        @Html.EditorFor(
+                            expression: model => model.Year,
+                            additionalViewData: new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control"
+                                }
+                            }
+                        )
+                    </div>
+
+                    @Html.ValidationMessageFor(
+                        expression: model => model.Year
+                    )
+                </div>
+
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        @Html.LabelFor(
+                            expression: model => model.Month,
+                            htmlAttributes: new
+                            {
+                                @class = "input-group-text"
+                            }
+                        )
+
+                        @Html.EditorFor(
+                            expression: model => model.Month,
+                            additionalViewData: new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control"
+                                }
+                            }
+                        )
+                    </div>
                 </div>
             </div>
         </fieldset>

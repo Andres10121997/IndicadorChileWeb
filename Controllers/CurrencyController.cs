@@ -49,7 +49,7 @@ namespace IndicadorChileWeb.Controllers
         }
 
         [
-            HttpPost
+            HttpGet("[action]/{id}")
         ]
         public async Task<ActionResult> Search(SearchFilterModel SearchFilter)
         {
