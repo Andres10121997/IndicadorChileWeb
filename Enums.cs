@@ -5,7 +5,6 @@ namespace IndicadorChileWeb
 {
     public static class Enums
     {
-        [Flags]
         public enum currencyTypeEnum : byte
         {
             [

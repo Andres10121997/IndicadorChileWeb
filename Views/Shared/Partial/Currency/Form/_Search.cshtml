@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IndicadorChileWeb.Models.SearchFilterModel
+@{
     const string formID = "GetCurrencyForm";
 }
 @{
@@ -23,6 +24,34 @@
             <legend class="text-center">
                 Buscar divisa
             </legend>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group">
+                        @Html.LabelFor(
+                            expression: model => model.CurrencyType,
+                            htmlAttributes: new
+                            {
+                                @class = "input-group-text"
+                            }
+                        )
+                        
+                        @Html.DropDownListFor(
+                            expression: model => model.CurrencyType,
+                            @Html.GetEnumSelectList<Enums.currencyTypeEnum>(),
+                            optionLabel: "- Selecciones una opción -",
+                            htmlAttributes: new
+                            {
+                                @class = "form-control"
+                            }
+                        )
+                    </div>
+
+                    @Html.ValidationMessageFor(
+                        expression: model => model.CurrencyType
+                    )
+                </div>
+            </div>
         </fieldset>
     Html.EndForm();
 }
