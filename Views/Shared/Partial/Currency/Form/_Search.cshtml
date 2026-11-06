@@ -43,7 +43,7 @@
                             optionLabel: "- Selecciones una opción -",
                             htmlAttributes: new
                             {
-                                @class = "form-control",
+                                @class = "form-control text-center",
                                 @form = formID
                             }
                         )
@@ -54,6 +54,7 @@
                     )
                 </div>
 
+                <!-- Year -->
                 <div class="col-6">
                     <div class="input-group mb-3">
                         @Html.LabelFor(
@@ -82,6 +83,7 @@
                     )
                 </div>
 
+                <!-- Month -->
                 <div class="col-6">
                     <div class="input-group mb-3">
                         @Html.LabelFor(
@@ -108,6 +110,26 @@
                     @Html.ValidationMessageFor(
                         expression: model => model.Month
                     )
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Submit -->
+                <div class="col-6">
+                    <div class="d-grid gap-2">
+                        <button class="" form="@formID" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reset -->
+                <div class="col-6">
+                    <div class="d-grid gap-2">
+                        <button class="" form="@formID" type="reset">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </fieldset>
