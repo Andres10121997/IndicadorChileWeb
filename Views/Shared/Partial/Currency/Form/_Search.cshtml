@@ -1,10 +1,10 @@
 ﻿@model IndicadorChileWeb.Models.SearchFilterModel
 @{
-    const string formID = "GetCurrencyForm";
+    const string formID = "CurrencySearchForm";
 }
 @{
     Html.BeginForm(
-        actionName: "",
+        actionName: "Search",
         controllerName: "Currency",
         routeValues: new
         {
@@ -15,7 +15,7 @@
         htmlAttributes: new
         {
             @autocomplete = "off",
-            @class = "",
+            @class = "container",
             @id = formID,
             @name = formID
         }
@@ -43,7 +43,8 @@
                             optionLabel: "- Selecciones una opción -",
                             htmlAttributes: new
                             {
-                                @class = "form-control"
+                                @class = "form-control",
+                                @form = formID
                             }
                         )
                     </div>
@@ -69,7 +70,8 @@
                             {
                                 htmlAttributes = new
                                 {
-                                    @class = "form-control"
+                                    @class = "form-control text-center",
+                                    @form = formID
                                 }
                             }
                         )
@@ -96,11 +98,16 @@
                             {
                                 htmlAttributes = new
                                 {
-                                    @class = "form-control"
+                                    @class = "form-control text-center",
+                                    @form = formID
                                 }
                             }
                         )
                     </div>
+
+                    @Html.ValidationMessageFor(
+                        expression: model => model.Month
+                    )
                 </div>
             </div>
         </fieldset>
