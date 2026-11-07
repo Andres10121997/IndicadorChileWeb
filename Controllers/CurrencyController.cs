@@ -49,7 +49,9 @@ namespace IndicadorChileWeb.Controllers
         }
 
         [
-            HttpGet("[action]/{id}")
+            HttpGet(
+                template: "[action]/{id}"
+            )
         ]
         public async Task<ActionResult> Search(SearchFilterModel SearchFilter)
         {
@@ -74,7 +76,7 @@ namespace IndicadorChileWeb.Controllers
 
             await Task.WhenAll(
                 this.ViewDataKeywordsAsync(
-                    Keywords: new string[]
+                    Keywords: new string[2]
                     {
                         this.ControllerName,
                         this.ActionName
@@ -93,7 +95,7 @@ namespace IndicadorChileWeb.Controllers
 
             await Task.WhenAll(
                 this.ViewDataKeywordsAsync(
-                    Keywords: new string[]
+                    Keywords: new string[2]
                     {
                         this.ControllerName,
                         this.ActionName

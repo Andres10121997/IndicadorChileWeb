@@ -67,7 +67,7 @@ namespace IndicadorChileWeb.Controllers
 
             await Task.WhenAll(
                 this.ViewDataKeywordsAsync(
-                    Keywords: new string[]
+                    Keywords: new string[2]
                     {
                         this.ControllerName,
                         this.ActionName
