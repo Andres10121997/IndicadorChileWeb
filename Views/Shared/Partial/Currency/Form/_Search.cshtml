@@ -17,7 +17,8 @@
             @autocomplete = "off",
             @class = "container",
             @id = formID,
-            @name = formID
+            @name = formID,
+            @role = "form"
         }
     );
         <fieldset form="@formID">
@@ -25,7 +26,7 @@
                 Buscar divisa
             </legend>
 
-            <div class="row">
+            <div class="row" role="row">
                 <!-- Currency Type -->
                 <div class="col-12">
                     <div class="input-group mb-3">
@@ -71,6 +72,7 @@
                             {
                                 htmlAttributes = new
                                 {
+                                    @autocomplete = "off",
                                     @class = "form-control text-center",
                                     @form = formID,
                                     @inputmode = "numeric"
@@ -101,6 +103,7 @@
                             {
                                 htmlAttributes = new
                                 {
+                                    @autocomplete = "off",
                                     @class = "form-control text-center",
                                     @form = formID,
                                     @inputmode = "numeric"
@@ -115,10 +118,10 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" role="row">
                 <!-- Submit -->
                 <div class="col-6">
-                    <div class="d-grid gap-2">
+                    <div class="d-grid gap-2 mb-3">
                         <button class="" form="@formID" role="button" title="Buscar información divisa" type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -127,7 +130,7 @@
 
                 <!-- Reset -->
                 <div class="col-6">
-                    <div class="d-grid gap-2">
+                    <div class="d-grid gap-2 mb-3">
                         <button class="" form="@formID" role="button" title="Resetear formulario" type="reset">
                             <i class="fa-solid fa-rotate-left"></i>
                         </button>
