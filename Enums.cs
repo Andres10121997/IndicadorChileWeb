@@ -35,5 +35,21 @@ namespace IndicadorChileWeb
             ]
             UF
         }
+
+        public enum monthNameEnum : byte
+        {
+            Enero = 1,
+            Febrero,
+            Marzo,
+            Abril,
+            Mayo,
+            Junio,
+            Julio,
+            Agosto,
+            Septiembre,
+            Octubre,
+            Noviembre,
+            Diciembre
+        }
     }
 }
