@@ -33,7 +33,7 @@ namespace IndicadorChileWeb.Controllers
         ]
         public async Task<ActionResult> Index()
         {
-            await this.IndexViewDataAsync();
+            await this.ViewDataIndexAsync();
             
             return this.View();
         }
@@ -43,7 +43,7 @@ namespace IndicadorChileWeb.Controllers
         ]
         public async Task<ActionResult> Search()
         {
-            await this.SearchViewDataAsync();
+            await this.ViewDataSearchAsync();
             
             return this.View();
         }
@@ -51,7 +51,8 @@ namespace IndicadorChileWeb.Controllers
         [
             HttpGet(
                 template: "[action]/{id}"
-            )
+            ),
+            RequireHttps
         ]
         public async Task<ActionResult> Search(SearchFilterModel SearchFilter)
         {
@@ -60,7 +61,7 @@ namespace IndicadorChileWeb.Controllers
                 return this.View();
             }
 
-            await this.SearchViewDataAsync();
+            await this.ViewDataSearchAsync();
 
             return this.View();
         }
@@ -69,8 +70,10 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region View Data
-        [NonAction]
-        private async Task IndexViewDataAsync()
+        [
+            NonAction
+        ]
+        private async Task ViewDataIndexAsync()
         {
             this.ActionName = "Index";
 
@@ -88,8 +91,10 @@ namespace IndicadorChileWeb.Controllers
             );
         }
 
-        [NonAction]
-        private async Task SearchViewDataAsync()
+        [
+            NonAction
+        ]
+        private async Task ViewDataSearchAsync()
         {
             this.ActionName = "Buscar";
 

@@ -34,7 +34,7 @@ namespace IndicadorChileWeb.Controllers
         ]
         public async Task<ActionResult> Index()
         {
-            await this.IndexViewDataAsync();
+            await this.ViewDataIndexAsync();
             
             return this.View();
         }
@@ -60,8 +60,10 @@ namespace IndicadorChileWeb.Controllers
 
 
         #region View Data
-        [NonAction]
-        private async Task IndexViewDataAsync()
+        [
+            NonAction
+        ]
+        private async Task ViewDataIndexAsync()
         {
             this.ActionName = "Index";
 
