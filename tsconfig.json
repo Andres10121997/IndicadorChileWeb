@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": "wwwroot/script/ts",
+    "outDir": "wwwroot/script/JavaScript",
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "es6"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": true
+}
