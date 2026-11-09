@@ -1,15 +1,19 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
-    "rootDir": "wwwroot/script/ts",
-    "outDir": "wwwroot/script/JavaScript",
     "noImplicitAny": false,
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": false,
-    "target": "es6"
+    "target": "es6",
+    "rootDir": "./Scripts",
+    "outDir": "wwwroot/JavaScript"
   },
-  "exclude": [
-    "node_modules"
+  "include": [
+    "Scripts/**/*"
   ],
-  "compileOnSave": true
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
 }
