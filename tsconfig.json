@@ -1,9 +1,24 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    // Output Formatting
+    "preserveWatchOutput": false,
+    "pretty": false,
+    "noErrorTruncation": false,
+
+    // Emit
+    "declaration": false,
+    "inlineSourceMap": false,
+    "removeComments": false,
+    "importHelpers": false,
+    "downlevelIteration": false,
+    "inlineSources": false,
+    "stripInternal": false,
+    "noEmitHelpers": false,
+    "preserveConstEnums": false,
+
     "noImplicitAny": false,
     "noEmitOnError": true,
-    "removeComments": false,
     "sourceMap": false,
     "target": "es6",
     "rootDir": "./Scripts",
