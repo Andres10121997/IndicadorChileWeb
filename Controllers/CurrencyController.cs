@@ -86,7 +86,11 @@ namespace IndicadorChileWeb.Controllers
                     }
                 ),
                 this.ViewDataTitleAsync(
-                    ActionName: this.ActionName
+                    Titles: new string[2]
+                    {
+                        this.ControllerName,
+                        this.ActionName
+                    }
                 )
             );
         }
@@ -107,7 +111,11 @@ namespace IndicadorChileWeb.Controllers
                     }
                 ),
                 this.ViewDataTitleAsync(
-                    ActionName: this.ActionName
+                    Titles: new string[2]
+                    {
+                        this.ControllerName,
+                        this.ActionName
+                    }
                 )
             );
         }
