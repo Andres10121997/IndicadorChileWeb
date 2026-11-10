@@ -7,6 +7,9 @@ namespace IndicadorChileWeb.Controllers
 {
     [
         AutoValidateAntiforgeryToken,
+        Route(
+            template: "[controller]"
+        ),
         RequireHttps
     ]
     public class CurrencyController : BaseController
@@ -29,7 +32,9 @@ namespace IndicadorChileWeb.Controllers
 
         #region Views
         [
-            HttpGet
+            HttpGet(
+                template: "[action]"
+            )
         ]
         public async Task<ActionResult> Index()
         {
@@ -39,7 +44,9 @@ namespace IndicadorChileWeb.Controllers
         }
 
         [
-            HttpGet
+            HttpGet(
+                template: "[action]"
+            )
         ]
         public async Task<ActionResult> Search()
         {
@@ -51,8 +58,7 @@ namespace IndicadorChileWeb.Controllers
         [
             HttpGet(
                 template: "[action]/{id}"
-            ),
-            RequireHttps
+            )
         ]
         public async Task<ActionResult> Search(SearchFilterModel SearchFilter)
         {
