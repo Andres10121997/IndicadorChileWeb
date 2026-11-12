@@ -11,7 +11,7 @@
     "inlineSourceMap": false,
     "removeComments": false,
     "importHelpers": false,
-    "downlevelIteration": false,
+    // "downlevelIteration": false,
     "inlineSources": false,
     "stripInternal": false,
     "noEmitHelpers": false,
