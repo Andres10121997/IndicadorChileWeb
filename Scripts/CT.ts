@@ -4,6 +4,7 @@
  * @returns {void}
  */
 (function (): void {
+    // Constant
     /**
      * @access private
      * @constant
