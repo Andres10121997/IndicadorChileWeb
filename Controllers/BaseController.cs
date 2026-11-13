@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IndicadorChileWeb.App.Interfaces.ViewData;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace IndicadorChileWeb.Controllers
 {
-    public abstract class BaseController : Controller
+    public abstract class BaseController : Controller, IViewDataKeywords, IViewDataTitle
     {
         #region Variables
         private string actionName;
@@ -43,25 +44,23 @@ namespace IndicadorChileWeb.Controllers
         }
 
         [ViewData]
-        public string Title
-        {
-            get => $"Indicadores de Chile | {this.title}";
-        }
-
-        [ViewData]
         public string Keywords
         {
             get => this.keywords;
+        }
+
+        [ViewData]
+        public string Title
+        {
+            get => $"Indicadores de Chile | {this.title}";
         }
         #endregion
 
 
 
         #region View Data
-        [
-            NonAction
-        ]
-        protected async Task ViewDataKeywordsAsync(string[] Keywords)
+        [NonAction]
+        public async Task ViewDataKeywordsAsync(string[] Keywords)
         {
             await Task.Run(
                 function: () => this.keywords = string.Join(
@@ -71,10 +70,8 @@ namespace IndicadorChileWeb.Controllers
             );
         }
 
-        [
-            NonAction
-        ]
-        protected async Task ViewDataTitleAsync(string[] Titles)
+        [NonAction]
+        public async Task ViewDataTitleAsync(string[] Titles)
         {
             await Task.Run(
                 function: () => this.title = string.Join(
