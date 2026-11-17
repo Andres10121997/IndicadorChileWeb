@@ -12,6 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:11.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+# Instalar Node.js para ejecutar scripts de compilación frontend
+RUN apt-get update && apt-get install -y nodejs npm
+
 COPY ["IndicadorChileWeb.csproj","."]
 RUN dotnet restore "./IndicadorChileWeb.csproj"
 COPY . .
