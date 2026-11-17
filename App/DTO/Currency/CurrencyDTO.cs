@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace IndicadorChileWeb.Models.Currency
+namespace IndicadorChileWeb.App.DTO.Currency
 {
     public record CurrencyDTO<TCurrency>
         where TCurrency : struct, IFloatingPointConstants<TCurrency>

@@ -36,4 +36,8 @@
     <TypeScriptCompile Include="Scripts\CT.ts" />
   </ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Context\NewFolder\" />
+	</ItemGroup>
+
 </Project>
