@@ -3,7 +3,7 @@
     const string formID = "CurrencySearchForm";
     const string optionLabel = "- Selecciones una opción -";
 }
-@{
+@using (
     Html.BeginForm(
         actionName: "Search",
         controllerName: "Currency",
@@ -12,7 +12,7 @@
             @area = string.Empty
         },
         method: FormMethod.Get,
-        antiforgery: true,
+        antiforgery: false,
         htmlAttributes: new
         {
             @autocomplete = "off",
@@ -21,118 +21,119 @@
             @name = formID,
             @role = "form"
         }
-    );
-        <fieldset form="@formID">
-            <legend class="text-center">
-                Buscar divisa
-            </legend>
+        )
+)
+{
+    <fieldset form="@formID">
+        <legend class="text-center">
+            Buscar divisa
+        </legend>
 
-            <div class="row" role="row">
-                <!-- Currency Type -->
-                <div class="col-12" title="Divisa">
-                    <div class="input-group mb-3">
-                        <label asp-for="@Model.CurrencyType" class="input-group-text" form="@formID">
-                            <i class="fa-solid fa-coins"></i>
-                        </label>
+        <div class="row" role="row">
+            <!-- Currency Type -->
+            <div class="col-12" title="Divisa">
+                <div class="input-group mb-3">
+                    <label asp-for="@Model.CurrencyType" class="input-group-text" form="@formID">
+                        <i class="fa-solid fa-coins"></i>
+                    </label>
                         
-                        @Html.DropDownListFor(
-                            expression: model => model.CurrencyType,
-                            selectList: @Html.GetEnumSelectList<Enums.currencyTypeEnum>(),
-                            optionLabel: @optionLabel,
-                            htmlAttributes: new
-                            {
-                                @class = "form-control text-center",
-                                @form = formID
-                            }
-                        )
-                    </div>
-
-                    @Html.ValidationMessageFor(
-                        expression: model => model.CurrencyType
+                    @Html.DropDownListFor(
+                        expression: model => model.CurrencyType,
+                        selectList: @Html.GetEnumSelectList<Enums.currencyTypeEnum>(),
+                        optionLabel: @optionLabel,
+                        htmlAttributes: new
+                        {
+                            @class = "form-control text-center",
+                            @form = formID
+                        }
                     )
                 </div>
 
-                <!-- Year -->
-                <div class="col-6" title="Año">
-                    <div class="input-group mb-3">
-                        @Html.LabelFor(
-                            expression: model => model.Year,
-                            htmlAttributes: new
-                            {
-                                @class = "input-group-text",
-                                @form = formID
-                            }
-                        )
+                @Html.ValidationMessageFor(
+                    expression: model => model.CurrencyType
+                )
+            </div>
 
-                        @Html.EditorFor(
-                            expression: model => model.Year,
-                            additionalViewData: new
-                            {
-                                htmlAttributes = new
-                                {
-                                    @autocomplete = "off",
-                                    @class = "form-control text-center",
-                                    @form = formID,
-                                    @inputmode = "numeric"
-                                }
-                            }
-                        )
-                    </div>
+            <!-- Year -->
+            <div class="col-6" title="Año">
+                <div class="input-group mb-3">
+                    @Html.LabelFor(
+                        expression: model => model.Year,
+                        htmlAttributes: new
+                        {
+                            @class = "input-group-text",
+                            @form = formID
+                        }
+                    )
 
-                    @Html.ValidationMessageFor(
-                        expression: model => model.Year
+                    @Html.EditorFor(
+                        expression: model => model.Year,
+                        additionalViewData: new
+                        {
+                            htmlAttributes = new
+                            {
+                                @autocomplete = "off",
+                                @class = "form-control text-center",
+                                @form = formID,
+                                @inputmode = "numeric"
+                            }
+                        }
                     )
                 </div>
 
-                <!-- Month -->
-                <div class="col-6" title="Mes">
-                    <div class="input-group mb-3">
-                        @Html.LabelFor(
-                            expression: model => model.Month,
-                            htmlAttributes: new
-                            {
-                                @class = "input-group-text",
-                                @form = formID
-                            }
-                        )
+                @Html.ValidationMessageFor(
+                    expression: model => model.Year
+                )
+            </div>
 
-                        @Html.DropDownListFor(
-                            expression: model => model.Month,
-                            selectList: @Html.GetEnumSelectList<Enums.monthNameEnum>(),
-                            optionLabel: @optionLabel,
-                            htmlAttributes: new
-                            {
-                                @class = "form-control text-center",
-                                @form = formID
-                            }
-                        )
-                    </div>
-
-                    @Html.ValidationMessageFor(
-                        expression: model => model.Month
+            <!-- Month -->
+            <div class="col-6" title="Mes">
+                <div class="input-group mb-3">
+                    @Html.LabelFor(
+                        expression: model => model.Month,
+                        htmlAttributes: new
+                        {
+                            @class = "input-group-text",
+                            @form = formID
+                        }
                     )
+
+                    @Html.DropDownListFor(
+                        expression: model => model.Month,
+                        selectList: @Html.GetEnumSelectList<Enums.monthNameEnum>(),
+                        optionLabel: @optionLabel,
+                        htmlAttributes: new
+                        {
+                            @class = "form-control text-center",
+                            @form = formID
+                        }
+                    )
+                </div>
+
+                @Html.ValidationMessageFor(
+                    expression: model => model.Month
+                )
+            </div>
+        </div>
+
+        <div class="row" role="row">
+            <!-- Submit -->
+            <div class="col-6">
+                <div class="d-grid gap-2 mb-3">
+                    <button class="" form="@formID" role="button" title="Buscar información divisa" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
             </div>
 
-            <div class="row" role="row">
-                <!-- Submit -->
-                <div class="col-6">
-                    <div class="d-grid gap-2 mb-3">
-                        <button class="" form="@formID" role="button" title="Buscar información divisa" type="submit">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Reset -->
-                <div class="col-6">
-                    <div class="d-grid gap-2 mb-3">
-                        <button class="" form="@formID" role="button" title="Resetear formulario" type="reset">
-                            <i class="fa-solid fa-rotate-left"></i>
-                        </button>
-                    </div>
+            <!-- Reset -->
+            <div class="col-6">
+                <div class="d-grid gap-2 mb-3">
+                    <button class="" form="@formID" role="button" title="Resetear formulario" type="reset">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
                 </div>
             </div>
-        </fieldset>
-    Html.EndForm();
+        </div>
+    </fieldset>
 }

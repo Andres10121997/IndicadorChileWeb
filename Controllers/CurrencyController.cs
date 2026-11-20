@@ -1,6 +1,8 @@
-﻿using IndicadorChileWeb.Models;
+﻿using IndicadorChileWeb.Context;
+using IndicadorChileWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 
 namespace IndicadorChileWeb.Controllers
@@ -45,29 +47,37 @@ namespace IndicadorChileWeb.Controllers
 
         [
             HttpGet(
-                template: "[action]"
-            )
-        ]
-        public async Task<ActionResult> Search()
-        {
-            await this.ViewDataSearchAsync();
-            
-            return this.View();
-        }
-
-        [
-            HttpGet(
                 template: "[action]/{id}"
             )
         ]
-        public async Task<ActionResult> Search(SearchFilterModel SearchFilter)
+        public async Task<ActionResult> Search([FromQuery] SearchFilterModel SearchFilter)
         {
+            ContextBase contextBase = new ContextBase();
+            var currency = await contextBase.GetCurrencyList(SearchFilter);
+
+            await this.ViewDataSearchAsync();
+
             if (!ModelState.IsValid)
             {
                 return this.View();
             }
 
-            await this.ViewDataSearchAsync();
+            if (currency.IsSuccess)
+            {
+                this.logger.LogInformation(
+                    "Lista de divisas",
+                    currency.Value
+                );
+                Console.WriteLine("Lista de divisas", currency.Value);
+            }
+            else
+            {
+                this.logger.LogError(
+                    exception: currency.Error,
+                    message: "Error al obtener la lista de divisas"
+                );
+                Console.WriteLine("Error al obtener la lista de divisas", currency.Error);
+            }
 
             return this.View();
         }
