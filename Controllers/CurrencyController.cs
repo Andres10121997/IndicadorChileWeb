@@ -47,7 +47,7 @@ namespace IndicadorChileWeb.Controllers
 
         [
             HttpGet(
-                template: "[action]/{id}"
+                template: "[action]"
             )
         ]
         public async Task<ActionResult> Search([FromQuery] SearchFilterModel SearchFilter)
