@@ -1,7 +1,7 @@
 ﻿@model IndicadorChileWeb.Models.SearchFilterModel
 @{
     const string formID = "CurrencySearchForm";
-    const string optionLabel = "- Selecciones una opción -";
+    const string optionLabel = "-- Selecciones una opción --";
 }
 @using (
     Html.BeginForm(
@@ -21,11 +21,11 @@
             @name = formID,
             @role = "form"
         }
-        )
+    )
 )
 {
     <fieldset form="@formID">
-        <legend class="text-center">
+        <legend class="fw-bold text-capitalize text-center">
             Buscar divisa
         </legend>
 

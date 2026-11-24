@@ -57,24 +57,17 @@ namespace IndicadorChileWeb.Controllers
             Result<CurrencyHeaderDTO<float>, Exception> currency;
             #endregion
 
-            if (!ModelState.IsValid)
-            {
-                return this.RedirectToAction(
-                    actionName: "Index",
-                    controllerName: "Currency",
-                    routeValues: new
-                    {
-                        area = ""
-                    }
-                );
-            }
-
             #region Init
             contextBase = new ContextBase();
             currency = await contextBase.GetCurrencyList(SearchFilter);
             #endregion
 
             await this.ViewDataSearchAsync();
+
+            if (!ModelState.IsValid)
+            {
+                return this.View();
+            }
 
             if (currency.IsSuccess)
             {
