@@ -49,14 +49,15 @@ namespace IndicadorChileWeb.Context
                 {
                     using (HttpResponseMessage response = await client.SendAsync(request: request))
                     {
-                        var responseContent = await response.Content.ReadFromJsonAsync<CurrencyHeaderDTO<float>>();
+                        #region Objects
+                        CurrencyHeaderDTO<float> responseContent;
+                        #endregion
 
-                        if (responseContent is null)
-                        {
-                            throw new ArgumentNullException(
-                                paramName: nameof(responseContent)
-                            );
-                        }
+                        responseContent = await response.Content.ReadFromJsonAsync<CurrencyHeaderDTO<float>>()
+                                          ??
+                                          throw new ArgumentNullException(
+                                              paramName: nameof(response)
+                                          );
 
                         return Result<CurrencyHeaderDTO<float>, Exception>.Success(responseContent);
                     }
