@@ -1,4 +1,6 @@
-﻿using IndicadorChileWeb.Context;
+﻿using IndicadorChileWeb.App;
+using IndicadorChileWeb.App.DTO.Currency;
+using IndicadorChileWeb.Context;
 using IndicadorChileWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -34,9 +36,7 @@ namespace IndicadorChileWeb.Controllers
 
         #region Views
         [
-            HttpGet(
-                template: "[action]"
-            )
+            HttpGet
         ]
         public async Task<ActionResult> Index()
         {
@@ -52,23 +52,36 @@ namespace IndicadorChileWeb.Controllers
         ]
         public async Task<ActionResult> Search([FromQuery] SearchFilterModel SearchFilter)
         {
-            ContextBase contextBase = new ContextBase();
-            var currency = await contextBase.GetCurrencyList(SearchFilter);
-
-            await this.ViewDataSearchAsync();
+            #region Objects
+            ContextBase contextBase;
+            Result<CurrencyHeaderDTO<float>, Exception> currency;
+            #endregion
 
             if (!ModelState.IsValid)
             {
-                return this.View();
+                return this.RedirectToAction(
+                    actionName: "Index",
+                    controllerName: "Currency",
+                    routeValues: new
+                    {
+                        area = ""
+                    }
+                );
             }
+
+            #region Init
+            contextBase = new ContextBase();
+            currency = await contextBase.GetCurrencyList(SearchFilter);
+            #endregion
+
+            await this.ViewDataSearchAsync();
 
             if (currency.IsSuccess)
             {
                 this.logger.LogInformation(
-                    "Lista de divisas",
-                    currency.Value
+                    message: "Lista de divisas",
+                    args: currency.Value
                 );
-                Console.WriteLine("Lista de divisas", currency.Value);
             }
             else
             {
@@ -76,7 +89,6 @@ namespace IndicadorChileWeb.Controllers
                     exception: currency.Error,
                     message: "Error al obtener la lista de divisas"
                 );
-                Console.WriteLine("Error al obtener la lista de divisas", currency.Error);
             }
 
             return this.View();
