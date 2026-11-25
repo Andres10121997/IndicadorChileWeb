@@ -11,6 +11,7 @@ namespace IndicadorChileWeb.Controllers
 {
     [
         AutoValidateAntiforgeryToken,
+        Controller,
         Route(
             template: "[controller]"
         ),
