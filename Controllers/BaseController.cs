@@ -24,8 +24,11 @@ namespace IndicadorChileWeb.Controllers
         {
             this.actionName = string.Empty;
             this.controllerName = ControllerName;
+
+            #region View Data
             this.title = string.Empty;
             this.keywords = string.Empty;
+            #endregion
         }
         #endregion
 
@@ -35,7 +38,7 @@ namespace IndicadorChileWeb.Controllers
         protected string ActionName
         {
             get => this.actionName;
-            set => this.actionName = value;
+            set => this.actionName = value.Trim();
         }
         
         protected string ControllerName

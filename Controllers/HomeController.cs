@@ -8,6 +8,7 @@ namespace IndicadorChileWeb.Controllers
 {
     [
         AutoValidateAntiforgeryToken,
+        Controller,
         RequireHttps
     ]
     public class HomeController : BaseController
