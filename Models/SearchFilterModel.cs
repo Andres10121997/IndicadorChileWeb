@@ -67,12 +67,11 @@ namespace IndicadorChileWeb.Models
             Editable(
                 allowEdit: true
             ),
-            Range(
-                minimum: 1,
-                maximum: 12
+            EnumDataType(
+                enumType: typeof(Enums.monthNameEnum)
             )
         ]
-        public byte? Month { get; init; }
+        public Enums.monthNameEnum? Month { get; init; }
         #endregion
     }
 }

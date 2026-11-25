@@ -6,7 +6,6 @@ namespace IndicadorChileWeb.Controllers
 {
     [
         AutoValidateAntiforgeryToken,
-        NonController,
         RequireHttps
     ]
     public abstract class BaseController : Controller, IViewDataKeywords, IViewDataTitle
